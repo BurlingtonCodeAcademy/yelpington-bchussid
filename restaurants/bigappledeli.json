@@ -1,0 +1,16 @@
+{
+  "id": "bigappledeli",
+  "name": "Big Apple Deli",
+  "tagline": "Best sandwich in Vermont",
+  "address": "506 Porters Point Road, Colchester VT",
+  "phone": "(802) 497-1732",
+  "hours": "10:00 am - 6:00 pm",
+  "lat": "44.540960",
+  "long": "-73.256013",
+  "notes": [
+    "Sandwiches and deli items are by New York transplants with New York ingredients for an authentic NY deli experience.",
+    "Follow their instagram for specials and menu updates.",
+    "Though they're located in Colchester, it is well worth the drive. From anywhere. Seriously.",
+    "Text to order."
+  ]
+}

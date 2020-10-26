@@ -1,12 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-  <script src="main.js"></script>
-</body>
+    <!-- leaflet imports -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <!-- stylesheet import -->
+    <link href="index.css" rel="stylesheet" />
+    <!-- font import -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Grandstander:ital@1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1 id="header">Yelpington!</h1>
+
+    <div class="map-side-container">
+      <div id="map-container"></div>
+
+      <div class="sidebar">
+        <div>
+          <a href="/restaurants/bigappledeli"> Big Apple Deli</a>
+        </div>
+        <div>
+          <a href="/restaurants/drifters"> Drifter's</a>
+        </div>
+        <div>
+          <a href="/restaurants/henrystdeli"> Henry St. Deli</a>
+        </div>
+        <div>
+          <a href="/restaurants/qcb"> Queen City Brewery</a>
+        </div>
+        <div>
+          <a href="/restaurants/singlepebble"> A Single Pebble</a>
+        </div>
+        <div>
+          <a href="/restaurants/tinythai"> Tiny Thai</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Leaflet map (both itself and the tile layer/theme) imports
+      let myMap = L.map("map-container").setView([44.4989, -73.2121], 12);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(myMap);
+
+      //-----------------------markers-------------------//
+
+      //Big Apple Deli
+      let bigAppMark = L.marker([44.54096, -73.256013]).addTo(myMap);
+      bigAppMark.bindPopup(
+        "<a href='/restaurants/bigappledeli'>Big Apple Deli</a>"
+      );
+      //Drifters
+      let driftMark = L.marker([44.484905, -73.2112]).addTo(myMap);
+      driftMark.bindPopup("<a href='/restaurants/drifters'>Drifters</a>");
+      //Henry St.
+      let henryMark = L.marker([44.483977, -73.205189]).addTo(myMap);
+      henryMark.bindPopup(
+        "<a href='/restaurants/henrystdeli'>Henry St. Deli</a>"
+      );
+      //Queen City
+      let qcbMark = L.marker([44.459542, -73.214989]).addTo(myMap);
+      qcbMark.bindPopup("<a href='/restaurants/qcb'>Queen City Brewery</a>");
+      //Single Pebble
+      let pebbleMark = L.marker([44.477976, -73.214577]).addTo(myMap);
+      pebbleMark.bindPopup(
+        "<a href='/restaurants/singlepebble'>A Single Pebble</a>"
+      );
+      //Tiny Thai
+      let tinyThaiMark = L.marker([44.49033, -73.186732]).addTo(myMap);
+      tinyThaiMark.bindPopup("<a href='/restaurants/tinythai'>Tiny Thai</a>");
+    </script>
+  </body>
 </html>

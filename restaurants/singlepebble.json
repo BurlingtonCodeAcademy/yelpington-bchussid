@@ -1,0 +1,15 @@
+{
+    "id": "singlepebble",
+    "name": "A Single Pebble",
+    "tagline": "Classic traditional Chinese cuisine",
+    "address": "133 Bank Street, Burlington VT",
+    "phone": "(802) 865-5200",
+    "hours": "3:30 pm - 'close'",
+    "lat": "44.477976",
+    "long": "-73.214577",
+    "notes": [
+      "Manageable portions and an expansive menu makes A Single Pebble the perfect place for parties from family gatherings all the way down to two. ",
+      "The tasting menu is perfect for sharing and sampling a little of everything",
+      "Be sure to try the mock eel"
+    ]
+  }

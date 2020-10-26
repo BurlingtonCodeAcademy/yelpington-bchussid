@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <!-- leaflet import -->
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""
+        />
+        <script
+          src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+          integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+          crossorigin=""
+        ></script>
+        <!-- css style import -->
+        <link href="/index.css" rel="stylesheet" />
+        <!-- font import -->
+        <link href="https://fonts.googleapis.com/css2?family=Grandstander:ital@1&display=swap" rel="stylesheet">
+      </head>
+      <body>
+        <h1 id="header">Yelpington!</h1>
+
+        <div class="map-side-container">
+          <div id="rest-map"></div>
+
+          <div class="sidebar">
+            <h2 id="rest-name" style='text-decoration: underline;'></h2>
+            <h3 id="rest-tagline"></h3>
+            <h4 id="rest-address"></h4>
+            <h4 id="rest-hours"></h4>
+            <h4 id="rest-phone"></h4>
+          </div>
+        </div>
+
+        <footer>
+          <ul id="rest-notes">
+            <h4 style='text-align: center; text-decoration: underline;'>Noteworthy Notes</h4>
+
+          </ul>
+        </footer>
+
+        <script>
+          //get each restaurant's ID & fetch data from API endpoint
+          let restId = document.location.pathname.split("/").splice(-1);
+
+          fetch("/api/" + restId + ".json")
+            .then((res) => res.json())
+            .then(fillInfo);
+
+          //function that fills in each restaurants info
+          function fillInfo(rest) {
+            document.getElementById("rest-name").textContent = rest.name;
+            document.getElementById("rest-tagline").textContent = rest.tagline;
+            document.getElementById("rest-address").textContent = rest.address;
+            document.getElementById("rest-hours").textContent =
+              "Hours: " + rest.hours;
+            document.getElementById("rest-phone").textContent =
+              "Phone: " + rest.phone;
+            //same thing going on as above but with intermediate variables in order to manipulate
+            let commentArr = rest.notes;
+            console.log(commentArr);
+
+            let commentSect = document.getElementById("rest-notes");
+            console.log(commentSect);
+
+            //isolates each note/comment, turns them into list items and adds them to comment section for formatting
+            commentArr.forEach((comment) => {
+              let eachComment = document.createElement("li");
+              eachComment.append(comment);
+              console.log(eachComment);
+              commentSect.appendChild(eachComment);
+            });
+
+            //importing the map centered on restaurants location
+            myMap = L.map("rest-map").setView([rest.lat, rest.long], 17);
+
+            //get new tile layer - this one doesn't look great when zoomed in
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+              maxZoom: 19,
+              attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            }).addTo(myMap);
+
+            //restaurant marker
+            let restMark = L.marker([rest.lat, rest.long]).addTo(myMap);
+          }
+        </script>
+      </body>
+    </html>
+  </body>
+</html>

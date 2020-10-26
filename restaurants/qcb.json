@@ -1,0 +1,16 @@
+{
+  "id": "qcb",
+  "name": "Queen City Brewery",
+  "tagline": "World-class beers without the jetlag",
+  "address": "703 Pine Street, Burlington VT",
+  "phone": "(802) 540-0280",
+  "hours": "2:00 pm - 8:00 pm",
+  "lat": "44.459542",
+  "long": "-73.214989",
+  "notes": [
+    "Traditional European beer recipes done to perfection.",
+    "Though they're not affiliated, Pizza 44 (located in the front of the building) has very solid pizza and can be ordered from and eaten in the brewery's tasting room.",
+    "Dog-friendly, great atmosphere, and they have a great event space available for rent."
+    
+  ]
+}
